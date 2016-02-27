@@ -49,7 +49,6 @@ def get_location_type(df, cdc_location_df):
 
 
 def clean_data(df):
-
     df['state_no_accents'] = df['state'].apply(strip_accents)
     return df
 
@@ -68,8 +67,8 @@ def main():
         here, '../../../zika/Brazil/BR_Places.csv'))
     cdc_brazil_data_guide_df = pd.read_csv(os.path.join(
         here, '../../../zika/Brazil/BR_Data_Guide.csv'))
-    cdc_brazil_data_guide_right = cdc_brazil_data_guide_df[['data_field_code', 'data_field',
-                                                            'unit']]
+    cdc_brazil_data_guide_right = cdc_brazil_data_guide_df[
+        ['data_field_code', 'data_field', 'unit', 'time_period_type']]
 
     buzzfeed_brazil_datasets = glob(
         '../../../zika-data/data/parsed/brazil/*.csv')
