@@ -39,13 +39,13 @@ def get_cdc_places_match(df, cdc_places_df, df_col_name, cdc_places_col_name):
 def get_location(df, cdc_location_df):
     location = get_cdc_places_match(df, cdc_location_df,
                                     'state_no_accents', 'state_province')
-    return(location['location'])
+    return(location['location'].reset_index(drop=True))
 
 
 def get_location_type(df, cdc_location_df):
     location_type = get_cdc_places_match(df, cdc_location_df,
                                          'state_no_accents', 'state_province')
-    return(location_type['location_type'])
+    return(location_type['location_type'].reset_index(drop=True))
 
 
 def clean_data(df):
