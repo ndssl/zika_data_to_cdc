@@ -90,11 +90,13 @@ def main():
         df['location_type'] = location_type
         df['time_period'] = 'NA'
 
+        melt_value_vars = [c for c in df.columns if re.search(
+            '^cases|^microcephaly', c)]
+
         df = pd.melt(df, id_vars=[  # 'no', 'state',
             'report_date', 'location', 'location_type',
             'time_period'],
-            value_vars=['cases_under_investigation', 'cases_confirmed',
-                        'cases_discarded', 'cases_reported_total'],
+            value_vars=melt_value_vars,
             var_name='data_field_original',
             value_name='value')
 
