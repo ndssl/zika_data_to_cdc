@@ -106,6 +106,14 @@ def main():
         df = pd.merge(df, cdc_brazil_data_guide_right,
                       left_on='cdc', right_on='data_field')
 
+        # `cases_reported_total` is not a field in the CDC guidelines
+        # this value was a row sum of the other counts and could always
+        # be recalculated
+        df = df.loc[df['data_field'] != 'cases_reported_total']
+
+        # clean up before export
+        df = df.drop(['buzzfeed', 'cdc'], axis=1)
+        df = df.fillna('NA')
 
         df_file_path = os.path.join(
             here, '..', '..', 'output', brazil_dataset.split('/')[-1])
