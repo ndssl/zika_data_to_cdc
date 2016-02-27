@@ -100,8 +100,12 @@ def main():
             var_name='data_field_original',
             value_name='value')
 
-        pd.merge(df, cdc_brazil_data_guide_right,
-                 left_on='data_field_original', right_on='data_field')
+        df = pd.merge(df, recodes,
+                      left_on='data_field_original', right_on='buzzfeed')
+
+        df = pd.merge(df, cdc_brazil_data_guide_right,
+                      left_on='cdc', right_on='data_field')
+
 
         df_file_path = os.path.join(
             here, '..', '..', 'output', brazil_dataset.split('/')[-1])
