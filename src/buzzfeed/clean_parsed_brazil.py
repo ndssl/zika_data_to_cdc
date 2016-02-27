@@ -62,6 +62,8 @@ def get_cdc_data_field_code(cdc_data_guide_df, cdc_str):
 def main():
     here = os.path.abspath(os.path.dirname(__file__))
 
+    recodes = pd.read_csv(os.path.join(
+        here, '../../data/buzzfeed_recodes.csv'))
     cdc_brazil_places_df = pd.read_csv(os.path.join(
         here, '../../../zika/Brazil/BR_Places.csv'))
     cdc_brazil_data_guide_df = pd.read_csv(os.path.join(
