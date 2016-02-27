@@ -72,38 +72,12 @@ def main():
     buzzfeed_brazil_datasets = glob(
         '../../../zika-data/data/parsed/brazil/*.csv')
 
-    # data_fields = {
-    #     'cases_under_investigation': {'cdc_data_field': 'microcephaly_under_investigation',
-    #                                   'cdc_data_field_code': get_cdc_data_field_code(
-    #                                       cdc_brazil_data_guide_df,
-    #                                       'microcephaly_under_investigation')},
-
-    #     'cases_confirmed': {'cdc_data_field': 'microcephaly_confirmed',
-    #                         'cdc_data_field_code': get_cdc_data_field_code(
-    #                             cdc_brazil_data_guide_df,
-    #                             'microcephaly_confirmed')},
-
-    #     'cases_discarded': {'cdc_data_field': 'microcephaly_not',
-    #                         'cdc_data_field_code': get_cdc_data_field_code(
-    # cdc_brazil_data_guide_df, 'microcephaly_not')},
-
-    #     'cases_reported_total': {'cdc_data_field': 'dropcol_cases_reported_total',
-    #                              'cdc_data_field_code': 'dropcol_cases_reported_total'}
-    # }
-
-    # column_pattern = re.compile("^cases")
-
     num_data_sets = len(buzzfeed_brazil_datasets)
     for i, brazil_dataset in enumerate(buzzfeed_brazil_datasets):
         print("Cleaning dataset {} of {}".format(i + 1, num_data_sets))
 
         df = load_data(brazil_dataset)
         df = clean_data(df)
-
-        # for column in df.columns:
-        #     if column_pattern.match(column):
-        #         print(column)
-        # df[data_fields.get(column).get('cdc_data_field')] = df[column]
 
         report_date = get_report_date(brazil_dataset)
         location = get_location(df, cdc_brazil_places_df)
