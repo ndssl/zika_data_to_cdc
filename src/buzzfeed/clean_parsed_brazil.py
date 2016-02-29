@@ -9,6 +9,7 @@ import re
 
 import pandas as pd
 import unicodedata
+import numpy as np
 
 
 def strip_accents(s):
@@ -50,6 +51,7 @@ def get_location_type(df, cdc_location_df):
 
 def clean_data(df):
     df['state_no_accents'] = df['state'].apply(strip_accents)
+    df = df.replace(r'\s*[Ss]em registros\s*', np.nan, regex=True)
     return df
 
 
