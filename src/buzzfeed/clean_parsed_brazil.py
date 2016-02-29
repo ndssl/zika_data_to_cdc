@@ -118,7 +118,7 @@ def main():
 
         df_file_path = os.path.join(
             here, '..', '..', 'output', brazil_dataset.split('/')[-1])
-        df.to_csv(df_file_path)
+        df.to_csv(df_file_path, index=False)
 
 if __name__ == "__main__":
     main()
