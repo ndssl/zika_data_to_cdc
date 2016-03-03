@@ -61,3 +61,19 @@ def get_report_date_from_filepath(filepath,
         string match for `date_pattern`
     """
     return re.findall(date_pattern, filepath)[date_result_position]
+
+
+def subset_columns_for_cdc(df,
+                           cdc_columns=['report_date',
+                                        'location',
+                                        'location_type',
+                                        'data_field',
+                                        'data_field_code',
+                                        'time_period',
+                                        'time_period_type',
+                                        'value',
+                                        'unit'],
+                           additional_columns=None):
+    if additional_columns is not None:
+        cdc_columns.extend(additional_columns)
+    return df[cdc_columns]
