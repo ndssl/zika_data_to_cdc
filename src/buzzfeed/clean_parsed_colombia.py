@@ -45,7 +45,6 @@ def clean_and_export_municipal(municipal_data_path, places_df, data_guide_df):
         df = helper.subset_columns_for_cdc(df)
         df.to_csv('output/colombia-municipal-{}.csv'.format(report_date),
                   index=False)
-        # break
 
 
 def clean_and_export_regional(regional_data_path):
@@ -53,9 +52,6 @@ def clean_and_export_regional(regional_data_path):
 
 
 def main():
-    # here = os.path.abspath(os.path.dirname(__file__))
-    # print(here)
-
     places_path = '../zika/Colombia/CO_Places.csv'
     places = pd.read_csv(places_path)
 
